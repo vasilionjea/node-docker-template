@@ -7,7 +7,8 @@
     "start": "node ./src/index.js",
     "dev": "nodemon ./src/index.js",
     "jest": "NODE_OPTIONS=--experimental-vm-modules jest --detectOpenHandles",
-    "test": "NODE_ENV=test npm run jest -- --watch"
+    "test": "NODE_ENV=test npm run jest -- --watch",
+    "test:ci": "NODE_ENV=test npm run jest -- --forceExit"
   },
   "keywords": [],
   "author": "",
