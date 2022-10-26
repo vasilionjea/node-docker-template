@@ -19,8 +19,9 @@ That isolation happens at different levels (e.g. processes, network, filesystem)
 **Build & run prod image in a container**
 * Build and start: `docker compose up --build`
 * Enter container's bash: `docker exec -it fish-species-api-prod bash`
-* Entere Redis bash: `docker exec -it redis bash` Then enter redis CLI: `redis-cli`
+* Enter Redis bash: `docker exec -it redis bash` Then enter redis CLI: `redis-cli`
 * Stop: `docker compose down`
+* Stop and delete volumes: `docker compose down -v`
 
 **Before docker compose**
 * Build prod image: `docker build -t fish-species-api:1.0.0-prod .`

@@ -1,3 +1,5 @@
+import info from 'ci-info';
+
 // https://jestjs.io/docs/configuration
 export default () => {
   return {
@@ -9,7 +11,7 @@ export default () => {
 
     setupFilesAfterEnv: ['./testing/jestRedisMock.js'],
 
-    collectCoverage: process.env.CI,
+    collectCoverage: info.isCI,
     coverageThreshold: {
       global: {
         branches: 80,
