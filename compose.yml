@@ -1,0 +1,26 @@
+# https://docs.docker.com/compose/compose-file
+version: "3.8"
+
+volumes:
+  prod_redis_data:
+
+services:
+  prod:
+    build: ./
+    container_name: fish-species-api-prod
+    depends_on:
+      - redis
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+
+  redis:
+    image: redis:7.0.5-bullseye
+    container_name: redis
+    restart: unless-stopped
+    volumes:
+      - prod_redis_data:/data
+    ports:
+      - "6379:6379"

@@ -1,0 +1,41 @@
+# https://docs.docker.com/compose/compose-file
+version: "3.8"
+
+volumes:
+  # A named volume for the Node modules folder.
+  # The node_modules folder that's created after "npm install" is run on the
+  # container will be overridden with an empty node_modules folder because of
+  # the bind mount we have for the whole project's folder. The node_modules
+  # folder on the host is empty (doesn't exist), therefore it's mapped to
+  # an empty folder and overrides the non-empty one.
+  node_modules:
+  redis_data:
+
+services:
+  dev:
+    image: node:18.11.0-bullseye-slim
+    container_name: fish-species-api-dev
+    depends_on:
+      - redis
+    restart: unless-stopped
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    working_dir: /home/node/app
+    command: bash -c "npm install && npm run dev"
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+    expose:
+      - "3000"
+
+  redis:
+    image: redis:7.0.5-bullseye
+    container_name: redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"

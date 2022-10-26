@@ -1,0 +1,17 @@
+node_modules/
+scripts/
+test/
+testing/
+.github/
+.git
+.gitignore
+*.md
+.vscode
+npm-debug.log
+.env
+.env.example
+.editorconfig
+*Dockerfile*
+.dockerignore
+compose*.yml
+jest.config.js
