@@ -30,4 +30,3 @@ test('it shuts down server on SIGINT signal', async () => {
   expect(appServer.server.close).toHaveBeenCalled();
   expect(process.exit).toHaveBeenCalledWith(0);
 });
-

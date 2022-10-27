@@ -28,6 +28,9 @@ That isolation happens at different levels (e.g. processes, network, filesystem)
 * Run docker prod image: `docker run -d -p 3000:3000 --name fish-species-api-prod fish-species-api:1.0.0-prod`
 * Exec Bash interactively inside the prod container: `docker exec -it fish-species-api-prod /bin/bash`
 
+**Release**
+* Steps here...
+
 
 ## Docker Compose 
 <https://docs.docker.com/compose/compose-file/#version-top-level-element>
