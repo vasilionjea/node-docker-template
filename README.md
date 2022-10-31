@@ -14,9 +14,6 @@ That isolation happens at different levels (e.g. processes, network, filesystem)
 **Build & run in dev environment**
 * Start: `docker compose -f compose.dev.yml up --build`
 * Stop: `docker compose -f compose.dev.yml down`
-* Run tests: `npm test`
-* Upgrade version: `npm version patch -m "Bump version to %s"` (choose between `patch`, `minor`, `major`)
-  See: <https://docs.npmjs.com/cli/v8/commands/npm-version#description>
 
 ### Testing 
 * Run and watch tests locally: `npm test`
@@ -24,20 +21,27 @@ That isolation happens at different levels (e.g. processes, network, filesystem)
 * Run CI tests in container: `docker compose -f compose.dev.yml run --rm test`
 
 ### Production
-**Build & run prod image in a container**
-* Build and start: `docker compose up --build`
-* Enter container's bash: `docker exec -it fish-species-api-prod bash`
-* Enter Redis bash: `docker exec -it redis bash` Then enter redis CLI: `redis-cli`
+**Run prod service**
+* Start: `docker compose up -d`
 * Stop: `docker compose down`
-* Stop and delete volumes: `docker compose down -v`
 
-**Before docker compose**
-* Build prod image: `docker build -t fish-species-api:1.0.0-prod .`
-* Run docker prod image: `docker run -d -p 3000:3000 --name fish-species-api-prod fish-species-api:1.0.0-prod`
-* Exec Bash interactively inside the prod container: `docker exec -it fish-species-api-prod /bin/bash`
+**Run prod service from locally built image**
+* Build from local Dockerfile & start: `docker compose up --build` (_compose.yml must have a `build: ./` option_)
+* Stop: `docker compose down`
+* Stop and delete volumes: `docker compose down -v` (_-v also removes valumes_)
+
+**Container interaction**
+* Enter Bash: `docker exec -it fish-species-api-prod bash`
+* Enter Redis CLI: `docker exec -it redis bash` Then enter redis CLI: `redis-cli`
 
 **Release**
-* Steps here...
+* Upgrade version: `npm version patch -m "Bump version to %s"` (choose between `patch`, `minor`, `major`)
+* New images are released via the _build-image.yml_ Github action.
+* On every push images are tagged with the `latest` tag.
+* When new version tags are pushed with `npm version`, images are tagged with the `v*.*.*` tag.
+
+**Deploy**
+* TBD...
 
 
 ## Docker Compose 
@@ -60,3 +64,7 @@ for the service from source.
 Each Service defines runtime constraints and requirements to run its containers. The `deploy` 
 section groups these constraints and allows the platform to adjust the deployment strategy to 
 best match containers’ needs with available resources.
+
+**Before docker compose**
+* Build prod image: `docker build -t fish-species-api:1.0.0-prod .`
+* Run docker prod image: `docker run -d -p 3000:3000 --name fish-species-api-prod fish-species-api:1.0.0-prod`
