@@ -23,7 +23,7 @@ app.use(compression());
 app.get('/fish/:species', getSpecies);
 
 app.get('/', (req, res) => {
-  res.send('It works!');
+  res.send('<h1>It works!</h1>');
 });
 
 export default app;
