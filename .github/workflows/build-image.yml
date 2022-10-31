@@ -46,7 +46,7 @@ jobs:
       -
         name: Test exported image
         run: |
-          docker compose -f compose.dev.yml run --rm ${{ env.TEST_TAG }}
+          docker run --rm ${{ env.TEST_TAG }}
       -
         name: Build and push to Docker Hub
         uses: docker/build-push-action@v3
