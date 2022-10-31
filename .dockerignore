@@ -9,10 +9,11 @@ testing/
 .vscode
 npm-debug.log
 .env
-.env.example
+.env.*
 .editorconfig
 *Dockerfile*
 .dockerignore
 compose*.yml
 jest.config.js
 coverage
+.DS_Store

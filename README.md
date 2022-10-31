@@ -11,9 +11,17 @@ When you run a Docker container, Docker proceeds to isolate it from the rest of 
 That isolation happens at different levels (e.g. processes, network, filesystem).
 
 ### Development 
-**Build & run**
+**Build & run in dev environment**
 * Start: `docker compose -f compose.dev.yml up --build`
 * Stop: `docker compose -f compose.dev.yml down`
+* Run tests: `npm test`
+* Upgrade version: `npm version patch -m "Bump version to %s"` (choose between `patch`, `minor`, `major`)
+  See: <https://docs.npmjs.com/cli/v8/commands/npm-version#description>
+
+### Testing 
+* Run and watch tests locally: `npm test`
+* Run CI tests locally: `npm run test:ci`
+* Run CI tests in container: `docker compose -f compose.dev.yml run --rm test`
 
 ### Production
 **Build & run prod image in a container**

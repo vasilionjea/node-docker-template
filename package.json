@@ -1,9 +1,14 @@
 {
   "name": "fish-species-service",
   "version": "1.0.1",
+  "private": true,
   "type": "module",
-  "description": "",
+  "engines": {
+    "node": ">=14"
+  },
   "scripts": {
+    "preversion": "npm run test:ci",
+    "postversion": "git push --tags",
     "start": "node ./src/index.js",
     "dev": "nodemon ./src/index.js",
     "jest": "NODE_OPTIONS=--experimental-vm-modules jest --detectOpenHandles",

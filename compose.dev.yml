@@ -1,5 +1,5 @@
 # https://docs.docker.com/compose/compose-file
-version: "3.8"
+version: "3.9"
 
 volumes:
   # A named volume for the Node modules folder.
@@ -12,6 +12,18 @@ volumes:
   redis_data:
 
 services:
+  test:
+    image: node:18.11.0-bullseye-slim
+    container_name: fish-species-api-test
+    command: bash -c "npm install && npm run test:ci"
+    volumes:
+      - .:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=test
+      - CI=true
+
   dev:
     image: node:18.11.0-bullseye-slim
     container_name: fish-species-api-dev
