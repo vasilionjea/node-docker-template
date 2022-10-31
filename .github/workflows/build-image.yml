@@ -37,17 +37,6 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       -
-        name: Build and export to Docker
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          load: true
-          tags: ${{ env.TEST_TAG }}
-      -
-        name: Test exported image
-        run: |
-          docker run --rm ${{ env.TEST_TAG }}
-      -
         name: Build and push to Docker Hub
         uses: docker/build-push-action@v3
         with:
