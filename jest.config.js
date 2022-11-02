@@ -1,5 +1,3 @@
-import info from 'ci-info';
-
 // https://jestjs.io/docs/configuration
 export default () => {
   return {
