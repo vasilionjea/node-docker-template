@@ -1,11 +1,15 @@
-# API
-An example Node service with Docker & CI/CD using Github Actions. Docker is used to containerize our app and start it with any other services it depends on (_in our example Redis_). Two Github Actions are being used – one to run unit tests on every push/pull request to the `main` branch, and another action is used to build the production Docker image for our app and push it to Docker Hub.
+# About
+An example Node service with Docker & CI/CD using Github Actions. 
 
-The _Dockerfile_ is used by the _build-image.yml_ Github action to build a production image such as `vasilionjea/fish-species-api:v1.0.2` and to push the image to Docker Hub.
+Docker is used to containerize this Node app and start it with any other services it depends on, in our example Redis. Two Github Actions have been created:
+1. The **run-unit-tests.yml** action runs unit tests on every push or pull request to the `main` branch.
+2. The **build-image.yml** action builds the production Docker image and pushes it to Docker Hub.
+
+The _build-image.yml_ Github action uses the _Dockerfile_ to build a production image such as `vasilionjea/fish-species-api:v1.0.2` and pushes that image to Docker Hub (_`vasilionjea` maps to my username and `fish-species-api` to the repository on https://hub.docker.com_). You must create your own account/repo and replace all references in the codebase.
 
 The _compose.yml_ file defines the containerized services for our app and it's used by the `docker compose up` command to run these services. The `prod` service (_our node app_) uses a prod image from our Docker Hub account/project.
 
-The _compose.dev.yml_ file defines the containerized services for development and it's used when running the command `docker compose -f compose.dev.yml up --build` to build a development image and start the dev services. Docker volumes sync changing source code between the container and the host machine.
+The _compose.dev.yml_ file defines the containerized services for development and it's used when running the command `docker compose -f compose.dev.yml up --build` to build a development image and start the dev services. Docker volumes sync source code changes between the container and the host machine.
 
 ## Development 
 Build & run in dev environment: 
