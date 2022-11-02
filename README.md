@@ -12,11 +12,11 @@ Build & run in dev environment:
 * Run CI tests in container: `docker compose -f compose.dev.yml run --rm test`
 
 ## Production
-Run prod service: 
+Run service in prod: 
 * Start: `docker compose up -d`
 * Stop: `docker compose down`
 
-Run prod service from locally built image: 
+Run prod service from a locally built image: 
 * Build from local Dockerfile & start: `docker compose up --build` (_compose.yml must have a `build: ./` option_)
 * Stop: `docker compose down`
 * Stop and delete volumes: `docker compose down -v` (_-v also removes valumes_)
