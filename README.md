@@ -1,9 +1,15 @@
 # API
-An example NodeJS service with docker & CI/CD using Github Actions.
+An example NodeJS service with Docker & CI/CD using Github Actions. 
+
+The _Dockerfile_ is used by the _build-image.yml_ Github action to build a production image such as `vasilionjea/fish-species-api:v1.0.2` and to push the image to Docker Hub.
+
+The _compose.yml_ file defines the containerized services for this application and it's used by the `docker compose up` command to run these services. The `prod` service (_our node app_) uses a prod image from our Docker Hub account/project.
+
+The _compose.dev.yml_ file defines the containerized services for development and it's used when running the command `docker compose -f compose.dev.yml up --build` to build a development image and start the dev services. Docker volumes sync changing source code between the container and the host machine.
 
 ## Development 
 Build & run in dev environment: 
-* Start: `docker compose -f compose.dev.yml up --build`
+* Start: `docker compose -f compose.dev.yml up --build -V`
 * Stop: `docker compose -f compose.dev.yml down`
 
 ## Testing 
