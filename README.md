@@ -1,5 +1,7 @@
 # About
-An example Node service with Docker & CI/CD using Github Actions. The Node Express API defines two simple routes purely as an example. The `/fish/:species` route returns some sample data either from https://www.fishwatch.gov/api or from a Redis cache. The focus of this template is Docker/DockerHub and Github Actions, and most of the NodeJS code can be removed if not needed.
+An example Node service with Docker & CI/CD using Github Actions. 
+
+The Node Express API defines two simple routes purely as an example. The `/fish/:species` route returns some sample data either from https://www.fishwatch.gov/api or from a Redis cache. The focus of this template is Docker/DockerHub and Github Actions, and most of the NodeJS code can be removed if not needed.
 
 Docker is used to containerize this Node app and start it with any other services it depends on, in our example Redis. Two Github Actions have been created:
 1. The **run-unit-tests.yml** action runs unit tests using Jest on every push or pull request to the `main` branch.
