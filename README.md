@@ -9,7 +9,7 @@ Docker is used to containerize this Node app and start it with any other service
 
 The _build-image.yml_ Github action uses the _Dockerfile_ to build a production image such as `vasilionjea/fish-species-api:v1.0.2` and pushes that image to Docker Hub (_`vasilionjea` maps to my username and `fish-species-api` to the repository on https://hub.docker.com_). You must create your own account/repo and replace all references in the codebase.
 
-The _compose.yml_ file defines the containerized services for our app and it's used by the `docker compose up` command to run these services. The `prod` service (_our node app_) uses a prod image from our Docker Hub account/project.
+The _compose.yml_ file defines the production containerized services for our app and it's used by the `docker compose up` command to run these services. The `prod` service (_our node app_) uses a prod image from our Docker Hub account/project.
 
 The _compose.dev.yml_ file defines the containerized services for development and it's used when running the command `docker compose -f compose.dev.yml up --build` to build a development image and start the dev services. Docker volumes sync source code changes between the container and the host machine.
 
