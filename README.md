@@ -1,9 +1,9 @@
 # About
-An example Node service with Docker & CI/CD using Github Actions. 
+An example Node service with Docker & CI/CD using Github Actions. The Node Express API defines two simple routes purely as an example. The `/fish/:species` route returns some sample data either from https://www.fishwatch.gov/api or from a Redis cache. The focus of this template is Docker/DockerHub and Github Actions, and most of the NodeJS code can be removed if not needed.
 
 Docker is used to containerize this Node app and start it with any other services it depends on, in our example Redis. Two Github Actions have been created:
-1. The **run-unit-tests.yml** action runs unit tests on every push or pull request to the `main` branch.
-2. The **build-image.yml** action builds the production Docker image and pushes it to Docker Hub.
+1. The **run-unit-tests.yml** action runs unit tests using Jest on every push or pull request to the `main` branch.
+2. The **build-image.yml** action builds the production Docker image and pushes it to my Docker Hub account/project. You should have your own Docker Hub account and define your own "secrets" otherwise this won't work. 
 
 The _build-image.yml_ Github action uses the _Dockerfile_ to build a production image such as `vasilionjea/fish-species-api:v1.0.2` and pushes that image to Docker Hub (_`vasilionjea` maps to my username and `fish-species-api` to the repository on https://hub.docker.com_). You must create your own account/repo and replace all references in the codebase.
 
@@ -15,6 +15,7 @@ The _compose.dev.yml_ file defines the containerized services for development an
 Build & run in dev environment: 
 * Start: `docker compose -f compose.dev.yml up --build -V`
 * Stop: `docker compose -f compose.dev.yml down`
+* cURL or using Browser navigate to: http://localhost:3000/ or http://localhost:3000/fish/red-snapper
 
 ## Testing 
 * Run and watch tests locally: `npm test`
@@ -43,4 +44,4 @@ Release:
 * When new version tags are pushed with `npm version`, images are tagged with the `v*.*.*` tag.
 
 Deploy: 
-* TBD...
+* TBD (_depends on where... e.g. Google Cloud Run, Kubernetes, AWS, etc._)
