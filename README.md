@@ -22,7 +22,7 @@ Build & run in dev environment:
 ## Testing 
 * Run and watch tests locally: `npm test`
 * Run CI tests locally: `npm run test:ci`
-* Run CI tests in container: `docker compose -f compose.dev.yml run --rm test`
+* Run CI tests in container: `docker compose -f compose.dev.yml up --build -V test` or `docker compose -f compose.dev.yml run --rm test`
 
 ## Production
 Run service in prod: 
