@@ -24,7 +24,7 @@ export default class AppServer {
 				process.exit(1);
 				return;
 			}
-			logger.info(`App listening on port ${PORT}`);
+			logger.info(`App running at http://localhost:${PORT}/`);
 		});
 	}
 
