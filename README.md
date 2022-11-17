@@ -1,3 +1,5 @@
+[![Build Status](https://github.com/vasilionjea/node-docker-template/actions/workflows/run-unit-tests.yml/badge.svg)](https://github.com/vasilionjea/node-docker-template/actions/workflows/run-unit-tests.yml) [![Build Status](https://github.com/vasilionjea/node-docker-template/actions/workflows/build-image.yml/badge.svg)](https://github.com/vasilionjea/node-docker-template/actions/workflows/build-image.yml)
+
 # About
 An example Node service with Docker & CI/CD using Github Actions. 
 
