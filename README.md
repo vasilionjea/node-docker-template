@@ -1,6 +1,6 @@
+# About
 [![Build Status](https://github.com/vasilionjea/node-docker-template/actions/workflows/run-unit-tests.yml/badge.svg)](https://github.com/vasilionjea/node-docker-template/actions/workflows/run-unit-tests.yml) [![Build Status](https://github.com/vasilionjea/node-docker-template/actions/workflows/build-image.yml/badge.svg)](https://github.com/vasilionjea/node-docker-template/actions/workflows/build-image.yml)
 
-# About
 An example Node service with Docker & CI/CD using Github Actions. 
 
 The Node Express API defines two simple routes purely as an example. The `/fish/:species` route returns some sample data either from https://www.fishwatch.gov/api or from a Redis cache. The focus of this template is Docker/DockerHub and Github Actions, and most of the NodeJS code can be removed if not needed.
