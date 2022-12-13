@@ -33,6 +33,6 @@
     "jest": "^29.2.2",
     "nodemon": "^2.0.20",
     "redis-mock": "^0.56.3",
-    "supertest": "^6.3.1"
+    "supertest": "^6.3.3"
   }
 }
